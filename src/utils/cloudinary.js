@@ -12,14 +12,15 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localFilePath) => {
     try {
-        //check if local file is provided if not then return null
+         //check if local file is provided if not then return null
         if(!localFilePath) return null;
-        //upload the file on clu=oudinary 
+        //upload the file on cluoudinary 
        const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto" // it automatically determine the resuorce type
         })
         //filr has been uploaded successfully
-        console.log("file is uplaoded on cloudinary", response.url);
+      //  console.log("file is uplaoded on cloudinary", response.url);
+      fs.unlinkSync(localFilePath)
         return response;
     } catch (error) {
           // If an error occurs during the upload, remove the locally saved temp file
